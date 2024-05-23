@@ -18,5 +18,7 @@ input_store_linkman=By.XPATH,"//div[contains(@class,'form-right')]/div[3]/div/di
 input_store_email=By.XPATH,"//div[contains(@class,'form-right')]/div[5]/div/div/input"
 input_store_phone=By.XPATH,"//div[contains(@class,'form-right')]/div[7]/div/div/input"
 btn_store_add_yes=By.XPATH,"//div[contains(@class,'footer')]/button[1]"
+btn_store_add_no=By.XPATH,"//div[contains(@class,'footer')]/button[2]"
 btn_store_del=By.XPATH,"//div[contains(@class,'footer')]/button[3]"
 btn_store_del_yes=By.XPATH,"//div[contains(@class,'ivu-modal-confirm-footer')]/button[1]"
+btn_back=By.XPATH,'//*[@id="app"]/div/div[2]/div/div/div[2]/div[1]/span/i'

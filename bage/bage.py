@@ -89,7 +89,7 @@ class Base:
             return int(element.text)
         return None
 
-    #获取表格数据
+    #获取元素
     def get_element(self,loc,value):
         element=self.find_element(loc)
         if element:

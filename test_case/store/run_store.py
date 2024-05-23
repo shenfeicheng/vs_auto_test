@@ -4,7 +4,6 @@ import os
 
 if __name__ == "__main__":
     test_files = [
-        "test_area.py",
         "test_store.py",
     ]
     if os.path.exists("../Report/newxml"):

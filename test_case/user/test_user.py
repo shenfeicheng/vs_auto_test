@@ -18,4 +18,5 @@ class TestUser():
         page = PageUser(driver)
         page.click_btn_user_add()
         page.input_user(testdata['用户名称'],testdata['电子邮件'],testdata['电话号码'],testdata['角色'],testdata['管理范围'])
-        assert page.add_table_search(testdata['用户名称'],testdata['电子邮件'],testdata['电话号码'],testdata['角色'],testdata['管理范围'])
+        assert page.add_table_search(testdata['用户名称'],testdata['电子邮件'],testdata['电话号码'],testdata['角色'])
+        assert page.add_scope_search(testdata['管理范围'])
