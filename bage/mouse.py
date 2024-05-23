@@ -9,10 +9,12 @@ class Mouse:
     def mouse_hover(self,loc):
         ActionChains(self.driver).move_to_element(self.base.find_element(loc)).perform()
 
-    #移动到元素
+    # 点击元素
+    def mouse_click(self, loc):
+        ActionChains(self.driver).move_to_element(self.base.find_element(loc)).click().perform()
+
+    #移动到不可见元素
     def move_element(self,loc):
         ActionChains(self.driver).scroll_to_element(self.base.find_element(loc)).perform()
 
-    #点击元素
-    def mouse_click(self,loc):
-        ActionChains(self.driver).move_to_element(self.base.find_element(loc)).click().perform()
+

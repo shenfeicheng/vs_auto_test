@@ -45,7 +45,7 @@ class TestStore():
 
     @allure.story("修改门店失败")
     @pytest.mark.run(order=8)
-    @pytest.mark.skip
+    #@pytest.mark.skip
     @pytest.mark.parametrize("testdata", read_excel.load_testdata('../../data/data_store.xlsx', '修改门店失败'))
     def test_rework_fail(self, driver, testdata):
         page = PageStore(driver)

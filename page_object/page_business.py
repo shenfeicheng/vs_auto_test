@@ -19,7 +19,6 @@ class PageBusiness():
 
     #判断新增商家是否增加
     def business_add_sucess(self,text):
-        self.page
         sleep(1)
         return self.page.table_page_search(1, text, element_business.nextpage,element_business.table)
 

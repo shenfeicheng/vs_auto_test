@@ -25,7 +25,7 @@ class Base:
             return element
         except TimeoutException:
             print(f"Timeout waiting for element with locator: {loc}")
-            return []
+            return False
         except Exception as e:
             print(f"Error finding element: {e}")
             return None
@@ -38,10 +38,20 @@ class Base:
             return elements
         except TimeoutException:
             print(f"Timeout waiting for elements with locator: {loc}")
-            return []
+            return False
         except Exception as e:
             print(f"Error finding elements: {e}")
             return None
+
+    #判断页面元素是否存在
+    def is_element_not_present(self, loc, timeout=10):
+        try:
+            WebDriverWait(self.driver, timeout).until(
+                EC.presence_of_element_located(loc))
+            return True
+        except TimeoutException:
+            print(f"Timeout waiting for element with locator: {loc}")
+            return False
 
     #点击方法
     def click_element(self, loc):
@@ -59,13 +69,12 @@ class Base:
     #输入多个方法
     def input_texts(self, loc, texts):
         elements = self.find_elements(loc)
-        print(len(elements))
-        print(len(texts))
         if len(elements) != len(texts):
             raise ValueError("The number of elements and texts must be the same.")
         for element, text in zip(elements, texts):
             element.clear()
             element.send_keys(text)
+
     #获取文本
     def get_text(self, loc):
         element = self.find_element(loc)
@@ -81,7 +90,7 @@ class Base:
         return None
 
     #获取表格数据
-    def get_table(self,loc,value):
+    def get_element(self,loc,value):
         element=self.find_element(loc)
         if element:
             rows = element.find_elements(By.TAG_NAME, value)
@@ -90,7 +99,15 @@ class Base:
 
     # 获取表格行数据
     def get_table_rows(self,loc):
-        return self.get_table(loc, "tr")
+        return self.get_element(loc, "tr")
+
+    #获取页面元素的某个属性
+    def get_element_attribute(self,loc,attribute):
+        return self.find_element(loc).get_attribute(attribute)
+
+    #分割字符串
+    def split_string(self,combined_string, delimiter):
+        return combined_string.split(delimiter)
 
     # 判断下一页按钮是否可用
     def next_page_disable(self,next_page):
@@ -122,8 +139,6 @@ class Base:
         else:
             return found_match
                 # 如果找到了匹配项或者'下一页'按钮被禁用，则退出循环
-
-
 
     # 表格模糊分页查询
     def table_page_in_search(self,first_num,search_data,next_page,table_loc):
